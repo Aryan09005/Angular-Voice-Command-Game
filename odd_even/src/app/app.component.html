@@ -1,0 +1,75 @@
+<div class="home-content">
+  <div style="margin-bottom: 2rem;">
+    <span style="display: inline;font-size: 2rem;">
+      Command: {{command}}
+    </span>
+    <span *ngIf="error">
+      {{error}}
+    </span>
+    <!-- <span style="display: inline;font-size: 2rem;">{{categoryCount}} Catogories</span>
+    <span class="button btn-custom-primary" (click)="increaseCount()"
+      style="margin-right: 0px;border-radius:0px;border:2px solid #fff;">
+      Increase
+    </span>
+    <span class="button btn-custom-primary" (click)="decreaseCount()"
+      style="margin-left: 0px;border-radius:0px;border:2px solid #fff;">
+      Decrease
+    </span> -->
+  </div>
+
+  <button class="button reset-button" (click)="resetGame()" *ngIf="gameCompleted">Game Completed Reset</button>
+
+  <div class="container">
+    <!-- <app-icons [iconChoice]=21></app-icons> -->
+    <div class="example-container">
+      <h2>Items</h2>
+
+      <div id="all" cdkDropList [cdkDropListData]="all" [cdkDropListConnectedTo]="['animals','objects','sports']"
+        class="example-list" (cdkDropListDropped)="drop($event)" [cdkDropListEnterPredicate]="noReturnPredicate">
+        <div class="example-box" *ngFor="let number of all" [cdkDragData]="number" cdkDrag>
+          <!-- {{number}} -->
+          <div [ngClass]="{'highlight' : itemCount == number}">
+            <app-icons [iconChoice]="number"></app-icons>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-container">
+      <h2>Animals</h2>
+
+      <div id="animals" cdkDropList [cdkDropListData]="animals" cdkDropListConnectedTo="all" class="example-list"
+        (cdkDropListDropped)="drop($event)" [cdkDropListEnterPredicate]="animalPredicate">
+        <div class="example-box" *ngFor="let number of animals" cdkDrag [cdkDragData]="number">
+          <app-icons [iconChoice]="number"></app-icons>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-container">
+      <h2>Objects</h2>
+
+      <div id="objects" cdkDropList [cdkDropListData]="objects" cdkDropListConnectedTo="all" class="example-list"
+        (cdkDropListDropped)="drop($event)" [cdkDropListEnterPredicate]="objectPredicate">
+        <div class="example-box" *ngFor="let number of objects" cdkDrag [cdkDragData]="number">
+          <app-icons [iconChoice]="number"></app-icons>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-container">
+      <h2>Sports</h2>
+
+      <div id="sports" cdkDropList [cdkDropListData]="sports" cdkDropListConnectedTo="all" class="example-list"
+        (cdkDropListDropped)="drop($event)" [cdkDropListEnterPredicate]="sportsPredicate">
+        <div class="example-box" *ngFor="let number of sports" cdkDrag [cdkDragData]="number">
+          <app-icons [iconChoice]="number"></app-icons>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- {{changeList(all, animals,3, 1)}} -->
+  <!-- <button (click)="changeList()">
+    Enter in animal list
+  </button> -->
+</div>

@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~ngx-toastr/toastr';
+
+* {
+    font-family: sans-serif;
+}
+
+body {
+    color: #fff;
+    background-color: #242B2E;
+}
